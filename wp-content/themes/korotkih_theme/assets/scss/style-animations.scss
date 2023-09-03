@@ -1,0 +1,157 @@
+.animated {
+  transition: opacity 2s, transform 1.5s;
+
+  &.to-right {
+    transform: translateX(-200px);
+    opacity:   0;
+  }
+
+  &.to-left {
+    transform: translateX(200px);
+    opacity:   0;
+  }
+
+  &.to-top {
+    transform: translateY(300px);
+    opacity:   0;
+  }
+
+  &.to-bottom {
+    transform: translateY(-200px);
+    opacity:   0;
+  }
+
+  &.fade-in {
+    opacity: 0;
+  }
+}
+
+@keyframes to-left {
+  0% {
+    opacity:   0;
+    transform: translateX(150px);
+  }
+  100% {
+    opacity:   1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes to-right {
+  0% {
+    opacity:   0;
+    transform: translateX(-150px);
+  }
+  100% {
+    opacity:   1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes to-top {
+  0% {
+    opacity:   0;
+    transform: translateY(300px);
+  }
+  100% {
+    opacity:   1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes to-bottom {
+  0% {
+    opacity:   0;
+    transform: translateY(-150px);
+  }
+  100% {
+    opacity:   1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animated-sync-top {
+  transform: translateY(200px);
+  opacity:   0;
+}
+
+.animated-sync-left {
+  transform: translateX(-200px);
+  opacity:   0;
+}
+
+.animated-sync-fade {
+  opacity:   0;
+}
+
+.sync-to-top {
+  animation-name:            to-top;
+  animation-duration:        .8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode:       both;
+  @include desktop {
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.1 + $i /17}s;
+      }
+    }
+  }
+  @include mobile {
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.1 + $i /17}s;
+      }
+    }
+  }
+}
+
+.sync-to-left {
+  animation-name:            to-left;
+  animation-duration:        .8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode:       both;
+  @include desktop {
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.2 + $i /5}s;
+      }
+    }
+  }
+  @include mobile {
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.2 + $i /5}s;
+      }
+    }
+  }
+}
+
+.sync-to-fade {
+  animation-name:            fade-in;
+  animation-duration:        .8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode:       both;
+  @include desktop {
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.2 + $i /5}s;
+      }
+    }
+  }
+  @include mobile {
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.2 + $i /5}s;
+      }
+    }
+  }
+}
